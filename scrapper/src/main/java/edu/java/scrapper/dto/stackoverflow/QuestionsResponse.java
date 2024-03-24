@@ -1,4 +1,4 @@
-package edu.java.scrapper.model.stackoverflow;
+package edu.java.scrapper.dto.stackoverflow;
 
 import java.util.List;
 

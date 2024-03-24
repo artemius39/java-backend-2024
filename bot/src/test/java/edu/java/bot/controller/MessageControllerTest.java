@@ -15,14 +15,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class BotControllerTest {
+class MessageControllerTest {
     @Test
     void nonMessageUpdatesAreIgnored() {
         Update update = mock(Update.class);
         TelegramBot telegramBot = mock(TelegramBot.class);
         BotService botService = mock(BotService.class);
 
-        BotController controller = new BotController(telegramBot, botService);
+        MessageController controller = new MessageController(telegramBot, botService);
 
         controller.process(List.of(update));
 
@@ -41,10 +41,10 @@ class BotControllerTest {
         BotService botService = mock(BotService.class);
         when(botService.process(update)).thenReturn("response");
         TelegramBot bot = mock(TelegramBot.class);
-        BotController botController = new BotController(bot, botService);
+        MessageController messageController = new MessageController(bot, botService);
         ArgumentCaptor<SendMessage> captor = ArgumentCaptor.forClass(SendMessage.class);
 
-        botController.process(List.of(update));
+        messageController.process(List.of(update));
         verify(bot).execute(captor.capture());
         SendMessage sendMessage = captor.getValue();
         Long chatId = (Long) sendMessage.getParameters().get("chat_id");
