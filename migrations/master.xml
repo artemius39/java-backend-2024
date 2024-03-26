@@ -10,4 +10,5 @@
     <include file="01-user.sql"/>
     <include file="02-link.sql"/>
     <include file="03-user-link.sql"/>
+    <include file="04-add-primary-key-to-user-link.sql"/>
 </databaseChangeLog>
